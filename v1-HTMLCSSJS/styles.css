@@ -1,0 +1,27 @@
+body {
+  display: flex;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.nav {
+  height: 100vh;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-image: linear-gradient(to bottom, #000529 1%,#002055 24%,#005db5 67%,#0074d9 100%);
+  padding: 1rem;
+  text-align: center;
+
+  ul {
+    padding: 0%;
+  }
+}
+.nav li, .nav a {
+  color: white;
+  list-style: none;
+  text-decoration: none;
+}
+.nav li {
+  padding-bottom: 1rem;
+}
+#status-form form {
+  display: flex;
+  flex-direction: column;
+}
