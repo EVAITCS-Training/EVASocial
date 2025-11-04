@@ -19,14 +19,20 @@
       <li><a href="contact.html">Contact us</a></li> <!-- List item with link to contact page -->
     </ul>
    </aside>
-   <main> <!-- Main content area of the page -->
+   <main style="width: 70%;"> <!-- Main content area of the page -->
     <section id="status-form"> <!-- Section with unique ID for status posting form -->
       <form action="" method="post"> <!-- Form that submits data via POST method -->
-        <label for="status-post">Status: </label> <!-- Label associated with status input field -->
-        <input type="text" id="status-post"> <!-- Text input field for status content -->
-        <label for="username">Username: </label> <!-- Label associated with username input field -->
-        <input type="text" id="username"> <!-- Text input field for username -->
-        <button type="submit">Post</button> <!-- Submit button to send form data -->
+        <div id="status-text-box">
+          <label for="status-post">Status: </label> <!-- Label associated with status input field -->
+          <input type="text" id="status-post"> <!-- Text input field for status content -->
+        </div>
+        <div id="status-username-submit">
+          <div>
+            <label for="username">Username: </label> <!-- Label associated with username input field -->
+            <input type="text" id="username"> <!-- Text input field for username -->
+          </div>
+          <button type="submit">Post</button> <!-- Submit button to send form data -->
+        </div>
       </form>
     </section>
     <section id="status-data"> <!-- Section with unique ID containing status posts -->
