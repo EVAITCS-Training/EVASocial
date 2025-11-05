@@ -12,6 +12,7 @@ body {
   ul {
     padding: 0%;
   }
+  li {}
 }
 .nav li, .nav a {
   color: white;
