@@ -69,6 +69,7 @@ function postStatus(e) {
   console.table(post);
   console.table(posts);
   viewPosts();
+  saveToLocalStorage();
 }
 
 function viewPosts() {
@@ -81,4 +82,22 @@ function viewPosts() {
   });
 }
 
+/* const viewPosts = () => {
+ const statusData = document,getElementById("status-data");
+ statusData.
+}*/
+
+const saveToLocalStorage = () => {
+  localStorage.setItem("statusPosts", JSON.stringify(posts));
+}
+
+const getFromLocalStorage = () => {
+  if (localStorage.getItem("statusPosts") === null) return;
+  posts.length = 0;
+  JSON.parse(localStorage.getItem("statusPosts")).forEach(post => {
+    posts.push(post);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", getFromLocalStorage);
 document.addEventListener("DOMContentLoaded", viewPosts);
