@@ -75,11 +75,18 @@ function postStatus(e) {
 function viewPosts() {
   const statusData = document.getElementById("status-data");
   statusData.innerHTML = "";
-  posts.slice().reverse().forEach(post => {
+  posts.slice().reverse().forEach((post, idx) => {
     const statusRow = document.createElement("div");
-    statusRow.innerHTML = `<p>${post.username}</p><p>${post.status}</p>`;
+    const id = posts.length - 1 - idx;
+    statusRow.innerHTML = `<p>${post.username}</p><p>${post.status}</p><button onclick="deletePost(${id})">Delete</button>`;
     statusData.appendChild(statusRow);
   });
+}
+
+const deletePost = function(id) {
+  posts.splice(id, 1);
+  saveToLocalStorage();
+  viewPosts();
 }
 
 /* const viewPosts = () => {
