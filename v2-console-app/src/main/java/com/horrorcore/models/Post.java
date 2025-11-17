@@ -1,7 +1,9 @@
 package com.horrorcore.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 //Data Class, other names: Entities, Models
 public class Post extends Object {
@@ -17,7 +19,7 @@ public class Post extends Object {
     //LocalDate, LocalDateTime, LocalTime
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private Comment[] comments;
+    private List<Comment> comments;
     private static long idCounter = 1;
     //Default Constructor
     //Constructors are special methods to initialize instance objects during runtime
@@ -36,7 +38,7 @@ public class Post extends Object {
         this.likes = 0;
         this.dislikes = 0;
         this.createdAt = LocalDateTime.now();
-        this.comments = new Comment[10];
+        this.comments = new ArrayList<>();
     }
 
     public long getId() {
@@ -116,11 +118,11 @@ public class Post extends Object {
         this.updatedAt = updatedAt;
     }
 
-    public Comment[] getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(Comment[] comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 
@@ -132,7 +134,7 @@ public class Post extends Object {
                 ", username='" + username + '\'' +
                 ", likes=" + likes +
                 ", dislikes=" + dislikes +
-                ", comments=" + Arrays.toString(comments) +
+                ", comments=" + comments +
                 '}';
     }
 }
