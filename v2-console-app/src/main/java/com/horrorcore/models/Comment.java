@@ -2,6 +2,10 @@ package com.horrorcore.models;
 
 import java.time.LocalDateTime;
 
+/**
+ * Simple comment model attached to posts. Comments validate that the message is
+ * non-blank and assign an auto-increment id from a static counter.
+ */
 public class Comment {
     private long id;
     private String message;
