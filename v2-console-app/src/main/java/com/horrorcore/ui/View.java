@@ -4,6 +4,11 @@ import com.horrorcore.controllers.PostController;
 
 import java.util.Scanner;
 
+/**
+ * Lightweight console-based UI that drives the application. The View presents
+ * a simple menu, reads choices from the shared Scanner and delegates actions
+ * to the controller.
+ */
 public class View {
     private PostController postController;
     private Scanner scanner;

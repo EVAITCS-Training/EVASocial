@@ -6,6 +6,14 @@ import java.util.Arrays;
 import java.util.List;
 
 //Data Class, other names: Entities, Models
+/**
+ * Domain model representing a social media post.
+ *
+ * Key points:
+ * - Each Post has a unique id assigned from a static counter.
+ * - Newly created posts are drafts by default (isDraft = true).
+ * - Validation prevents blank status or username values.
+ */
 public class Post extends Object {
     // Field Variables
     // These variables are going to hold state data for the instance object
