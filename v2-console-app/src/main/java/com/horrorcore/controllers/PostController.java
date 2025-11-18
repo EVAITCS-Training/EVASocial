@@ -61,4 +61,13 @@ public class PostController {
         int choice = scanner.nextInt();
         postService.changeDraftStatus(choice);
     }
+
+    public void deletePostPrompt() {
+        System.out.println("Please enter your username");
+        String username = scanner.nextLine();
+        postService.findAllByUsername(username).forEach(System.out::println);
+        System.out.println("Please enter an id to delete post");
+        int choice = scanner.nextInt();
+        postService.deletePostById(choice);
+    }
 }

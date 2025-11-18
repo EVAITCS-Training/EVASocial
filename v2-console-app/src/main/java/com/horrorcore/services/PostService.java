@@ -2,6 +2,7 @@ package com.horrorcore.services;
 
 import com.horrorcore.dtos.PostInformation;
 import com.horrorcore.dtos.PostNewPostRequest;
+import com.horrorcore.exceptions.PostNotFoundException;
 import com.horrorcore.models.Post;
 import com.horrorcore.repositories.InMemoryPostRepository;
 import com.horrorcore.repositories.PostRepository;
@@ -73,5 +74,11 @@ public class PostService {
      */
     public List<PostInformation> findAllByUsername(String username) {
         return postRepository.findAllByUsername(username).stream().map(PostMapper::toDto).toList();
+    }
+
+    public boolean deletePostById(long id) {
+        postRepository.findById(id).orElseThrow(() ->
+                new PostNotFoundException("Post with id of " + id + " not found!"));
+        return postRepository.deleteById(id);
     }
 }

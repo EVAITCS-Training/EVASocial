@@ -13,8 +13,22 @@ import java.util.HashMap;
  * - getService("name") to retrieve and cast the stored object
  */
 public class DependencyContainer {
-    private HashMap<String, Object> container = new HashMap<>();
+    private static DependencyContainer INSTANCE;
+    private HashMap<String, Object> container = new HashMap<String, Object>();
 
+//    static {
+//        INSTANCE = new DependencyContainer();
+//    }
+
+    private DependencyContainer() {
+    }
+
+    public static DependencyContainer getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new DependencyContainer();
+        }
+        return INSTANCE;
+    }
     /**
      * Retrieve a previously-registered service by name.
      * Returns null if the name is not registered.

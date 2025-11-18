@@ -24,7 +24,7 @@ import java.util.Scanner;
 public class SocialMediaApp {
     public static void main(String[] args) {
         //static, final, transient, volatile
-        DependencyContainer dependencyContainer = new DependencyContainer();
+        DependencyContainer dependencyContainer = DependencyContainer.getInstance();
 
         // Register a simple in-memory repository for storing posts
         dependencyContainer.setService("repo", new InMemoryPostRepository());

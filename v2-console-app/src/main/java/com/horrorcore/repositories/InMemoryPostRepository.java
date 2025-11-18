@@ -4,6 +4,7 @@ import com.horrorcore.models.Post;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * A very small in-memory repository for Post objects. This implementation is
@@ -33,5 +34,16 @@ public class InMemoryPostRepository implements PostRepository {
         return posts.stream()
                 .filter(post -> post.getUsername().equalsIgnoreCase(username))
                 .toList();
+    }
+
+    @Override
+    public Optional<Post> findById(long id) {
+        return posts.stream().filter(post -> post.getId() == id)
+                .findFirst();
+    }
+
+    @Override
+    public boolean deleteById(long id) {
+        return posts.removeIf(post -> post.getId() == id);
     }
 }
