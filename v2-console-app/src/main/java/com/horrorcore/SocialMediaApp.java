@@ -5,8 +5,11 @@ import com.horrorcore.repositories.InMemoryPostRepository;
 import com.horrorcore.repositories.PostRepository;
 import com.horrorcore.services.PostService;
 import com.horrorcore.ui.View;
+import com.horrorcore.utils.DatabaseConnection;
 import com.horrorcore.utils.DependencyContainer;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -22,7 +25,7 @@ import java.util.Scanner;
  * - Start the console view loop
  */
 public class SocialMediaApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         //static, final, transient, volatile
         DependencyContainer dependencyContainer = DependencyContainer.getInstance();
 
@@ -42,6 +45,13 @@ public class SocialMediaApp {
         dependencyContainer.setService("view", new View(
                 (PostController) dependencyContainer.getService("controller"),
                 (Scanner) dependencyContainer.getService("scanner")));
+
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+
+        if (connection.isValid(5)) {
+            System.out.println("DATABASE CONNECTED");
+        }
+
         ((View) dependencyContainer.getService("view")).start();
     }
 }
