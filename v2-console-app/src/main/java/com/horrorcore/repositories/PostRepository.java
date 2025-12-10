@@ -11,4 +11,5 @@ public interface PostRepository {
     List<Post> findAllByUsername(String username);
     Optional<Post> findById(long id);
     boolean deleteById(long id);
+    boolean updatePost(Post post);
 }

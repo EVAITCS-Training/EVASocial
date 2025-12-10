@@ -2,6 +2,7 @@ package com.horrorcore;
 
 import com.horrorcore.controllers.PostController;
 import com.horrorcore.repositories.InMemoryPostRepository;
+import com.horrorcore.repositories.JDBCPostRepository;
 import com.horrorcore.repositories.PostRepository;
 import com.horrorcore.services.PostService;
 import com.horrorcore.ui.View;
@@ -30,7 +31,7 @@ public class SocialMediaApp {
         DependencyContainer dependencyContainer = DependencyContainer.getInstance();
 
         // Register a simple in-memory repository for storing posts
-        dependencyContainer.setService("repo", new InMemoryPostRepository());
+        dependencyContainer.setService("repo", new JDBCPostRepository());
         // Register a single Scanner instance shared across the app for console IO
         dependencyContainer.setService("scanner", new Scanner(System.in));
         // Register service with repository dependency resolved from the container

@@ -32,6 +32,10 @@ public class Comment {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public static long getIdCounter() {
         return idCounter;
     }
