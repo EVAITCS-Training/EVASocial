@@ -18,7 +18,28 @@ public class JDBCPostRepository implements PostRepository{
 
     @Override
     public Post save(Post post) {
-        return null;
+        final String sql = "INSERT INTO posts (status,username) VALUE (?,?)";
+        final String[] returnColumns = {"id", "likes", "is_draft", "dislikes", "created_at", "updated_at"};
+        try (PreparedStatement statement = connection.prepareStatement(sql, returnColumns)) {
+            statement.setString(1, post.getStatus());
+            statement.setString(2, post.getUsername());
+            int rows = statement.executeUpdate();
+            if (rows > 0) {
+                ResultSet resultSet = statement.getGeneratedKeys();
+                if (resultSet.next()) {
+                    post.setId(resultSet.getLong("id"));
+                    post.setDraft(resultSet.getBoolean("is_draft"));
+                    post.setLikes(resultSet.getInt("likes"));
+                    post.setDislikes(resultSet.getInt("dislikes"));
+                    post.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
+                    post.setUpdatedAt(resultSet.getTimestamp("updated_at").toLocalDateTime());
+                }
+                resultSet.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return post;
     }
 
     @Override
