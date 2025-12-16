@@ -2,11 +2,18 @@ package com.horrorcore;
 
 import com.horrorcore.controllers.PostController;
 import com.horrorcore.repositories.InMemoryPostRepository;
+import com.horrorcore.repositories.JDBCPostRepository;
 import com.horrorcore.repositories.PostRepository;
 import com.horrorcore.services.PostService;
 import com.horrorcore.ui.View;
+import com.horrorcore.utils.DatabaseConnection;
 import com.horrorcore.utils.DependencyContainer;
+import com.horrorcore.utils.IocContainer;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -22,26 +29,37 @@ import java.util.Scanner;
  * - Start the console view loop
  */
 public class SocialMediaApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         //static, final, transient, volatile
-        DependencyContainer dependencyContainer = DependencyContainer.getInstance();
+//        DependencyContainer dependencyContainer = DependencyContainer.getInstance();
+//
+//        // Register a simple in-memory repository for storing posts
+//        dependencyContainer.setService("repo", new JDBCPostRepository());
+//        // Register a single Scanner instance shared across the app for console IO
+//        dependencyContainer.setService("scanner", new Scanner(System.in));
+//        // Register service with repository dependency resolved from the container
+//        dependencyContainer.setService("service", new PostService(
+//                (PostRepository) dependencyContainer.getService("repo")
+//        ));
+//        // Register controller with service + scanner
+//        dependencyContainer.setService("controller", new PostController(
+//                (PostService) dependencyContainer.getService("service"),
+//                (Scanner) dependencyContainer.getService("scanner")));
+//        // Register view with controller + scanner and start the app
+//        dependencyContainer.setService("view", new View(
+//                (PostController) dependencyContainer.getService("controller"),
+//                (Scanner) dependencyContainer.getService("scanner")));
+//
+//        Connection connection = DatabaseConnection.getInstance().getConnection();
+//
+//        if (connection.isValid(5)) {
+//            System.out.println("DATABASE CONNECTED");
+//        }
+//
+//        ((View) dependencyContainer.getService("view")).start();
 
-        // Register a simple in-memory repository for storing posts
-        dependencyContainer.setService("repo", new InMemoryPostRepository());
-        // Register a single Scanner instance shared across the app for console IO
-        dependencyContainer.setService("scanner", new Scanner(System.in));
-        // Register service with repository dependency resolved from the container
-        dependencyContainer.setService("service", new PostService(
-                (PostRepository) dependencyContainer.getService("repo")
-        ));
-        // Register controller with service + scanner
-        dependencyContainer.setService("controller", new PostController(
-                (PostService) dependencyContainer.getService("service"),
-                (Scanner) dependencyContainer.getService("scanner")));
-        // Register view with controller + scanner and start the app
-        dependencyContainer.setService("view", new View(
-                (PostController) dependencyContainer.getService("controller"),
-                (Scanner) dependencyContainer.getService("scanner")));
-        ((View) dependencyContainer.getService("view")).start();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(IocContainer.class);
+        View view = applicationContext.getBean(View.class);
+        view.start();
     }
 }

@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 public class Comment {
     private long id;
     private String message;
-    private static long idCounter = 1;
     private LocalDateTime postDate;
 
     public Comment() {
@@ -19,7 +18,6 @@ public class Comment {
     public Comment(String message) {
         if (message.isBlank()) throw new IllegalArgumentException("Comments have to be filled out!");
         this.message = message;
-        this.id = idCounter++;
         this.postDate = LocalDateTime.now();
     }
 
@@ -32,8 +30,8 @@ public class Comment {
         return id;
     }
 
-    public static long getIdCounter() {
-        return idCounter;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getMessage() {

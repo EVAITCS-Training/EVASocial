@@ -28,7 +28,6 @@ public class Post extends Object {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private List<Comment> comments;
-    private static long idCounter = 1;
     //Default Constructor
     //Constructors are special methods to initialize instance objects during runtime
     public Post() {}
@@ -39,7 +38,6 @@ public class Post extends Object {
         }
         if(username.isBlank())
             throw new IllegalArgumentException("Username cannot be blank or empty!");
-        this.id = idCounter++;
         this.status = status;
         this.username = username;
         this.isDraft = true;
@@ -55,14 +53,6 @@ public class Post extends Object {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public static long getIdCounter() {
-        return idCounter;
-    }
-
-    public static void setIdCounter(long idCounter) {
-        Post.idCounter = idCounter;
     }
 
     public String getStatus() {
