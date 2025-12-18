@@ -5,12 +5,13 @@ import com.horrorcore.repositories.JDBCPostRepository;
 import com.horrorcore.repositories.PostRepository;
 import com.horrorcore.services.PostService;
 import com.horrorcore.ui.View;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 
 import java.util.Scanner;
 
 @Configuration
+@EnableAspectJAutoProxy
+@ComponentScan("com.horrorcore.utils")
 public class IocContainer {
 
     @Bean
