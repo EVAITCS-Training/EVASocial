@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface PostService {
     List<Post> getAllPosts();
+    Post createPost(Post post);
+    void updateLikes(long id);
+    void updateDislikes(long id);
 }

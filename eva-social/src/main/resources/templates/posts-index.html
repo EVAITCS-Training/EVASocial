@@ -21,10 +21,14 @@
                     <h4 th:text="${post.getStatus()}"></h4>
                 </li>
                 <li>
-                    <p th:text="${post.getLikes()}"></p>
+                    <form th:action="@{/posts/update/likes/{id}(id=${post.getId()})}" method="post" style="display:inline;">
+                        <button type="submit" th:text="${post.getLikes()}"></button>
+                    </form>
                 </li>
                 <li>
-                    <p th:text="${post.getDislikes()}"></p>
+                    <form th:action="@{/posts/update/dislikes/{id}(id=${post.getId()})}" method="post" style="display:inline;">
+                        <button type="submit" th:text="${post.getDislikes()}"></button>
+                    </form>
                 </li>
             </ul>
         </div>
