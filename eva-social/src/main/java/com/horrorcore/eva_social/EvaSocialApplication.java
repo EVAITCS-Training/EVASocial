@@ -2,14 +2,17 @@ package com.horrorcore.eva_social;
 
 import com.horrorcore.eva_social.entites.Comment;
 import com.horrorcore.eva_social.entites.Post;
+import com.horrorcore.eva_social.entites.UserCredential;
 import com.horrorcore.eva_social.repositories.CommentRepository;
 import com.horrorcore.eva_social.repositories.PostRepository;
+import com.horrorcore.eva_social.repositories.UserCredentialRepository;
 import com.horrorcore.eva_social.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,6 +28,12 @@ public class EvaSocialApplication implements CommandLineRunner {
 
 	@Autowired
 	private PostService postService;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private UserCredentialRepository userCredentialRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(EvaSocialApplication.class, args);
@@ -166,6 +175,12 @@ public class EvaSocialApplication implements CommandLineRunner {
 
 		System.out.println("Dummy posts and comments created successfully!");
 		postService.getAllPosts().forEach(System.out::println);
+
+		UserCredential admin = new UserCredential(
+				"admin@horrorcore.com",
+				passwordEncoder.encode("Gudmord92!"),
+				"ADMIN");
+		userCredentialRepository.save(admin);
 	}
 
 }
