@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -19,12 +20,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(htp ->
                                 htp
-                                        .requestMatchers(HttpMethod.GET, "/home", "/posts", "/posts/")
-                                        .permitAll()
-                                        .anyRequest()
-                                        .authenticated()
+//                                        .requestMatchers(HttpMethod.GET, "/home", "/posts", "/posts/")
+//                                        .permitAll()
+//                                        .anyRequest()
+//                                        .authenticated()
+                                        .anyRequest().permitAll()
                         )
                 .formLogin(form -> form
                         .defaultSuccessUrl("/posts", true)
