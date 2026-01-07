@@ -40,6 +40,11 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-validation-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
+	testImplementation("org.mockito:mockito-junit-jupiter:5.21.0")
+	testImplementation("org.mockito:mockito-core:5.21.0")
+	testImplementation("org.springframework.boot:spring-boot-testcontainers")
+	testImplementation("org.testcontainers:junit-jupiter")
+	testImplementation("org.testcontainers:mysql:1.21.4")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
