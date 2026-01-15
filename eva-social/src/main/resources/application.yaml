@@ -14,4 +14,4 @@ spring:
 
 # JWT Configuration
 jwt:
-  secret: REPLACE_WITH_GENERATED_BASE64_SECRET_AT_LEAST_256_BITS
+  secret: 7s1YRg86WGmRHqniBez5bNdmS+GNteG9OZRSV9XafuA=

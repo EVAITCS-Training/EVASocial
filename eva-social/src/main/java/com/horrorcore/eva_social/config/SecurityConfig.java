@@ -35,7 +35,7 @@ public class SecurityConfig {
                                 "/static/**",
                                 "/assets/**",
                                 "/favicon.ico",
-                                "index.html",
+                                "/index.html",
                                 "/home",
                                 "/posts",
                                 "/posts/"
