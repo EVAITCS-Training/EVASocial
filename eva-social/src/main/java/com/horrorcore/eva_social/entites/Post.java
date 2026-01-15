@@ -95,11 +95,21 @@ public class Post {
         return dislikedBy != null ? dislikedBy.size() : 0;
     }
 
-    // Maintain backwards compatibility
+    // Maintain backwards compatibility - deprecated
+    /**
+     * @deprecated Likes are now managed through the likedBy relationship.
+     * This method is a no-op maintained for backwards compatibility.
+     */
+    @Deprecated
     public void setLikes(long likes) {
         // No-op for backwards compatibility with existing code
     }
 
+    /**
+     * @deprecated Dislikes are now managed through the dislikedBy relationship.
+     * This method is a no-op maintained for backwards compatibility.
+     */
+    @Deprecated
     public void setDislikes(long dislikes) {
         // No-op for backwards compatibility with existing code
     }
