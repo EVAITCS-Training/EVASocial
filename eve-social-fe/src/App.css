@@ -1,0 +1,130 @@
+/* Eva Social Custom Styles */
+
+.App {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+/* Navbar customizations */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Post card improvements */
+.card {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.card-header {
+  background-color: #fff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Button improvements */
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Hashtag styling */
+.badge {
+  font-size: 0.75rem;
+}
+
+/* Loading states */
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 0.5rem;
+  }
+  
+  .card {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Form styling */
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+/* Custom alert styles */
+.alert-sm {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Character counter styling */
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+/* Dropdown improvements */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Post content styling */
+.card-text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Sidebar styling */
+@media (min-width: 768px) {
+  .col-md-3 .card {
+    position: sticky;
+    top: 20px;
+  }
+}
+
+/* Button group spacing */
+.btn-group .btn {
+  margin-right: 0;
+}
+
+/* Make buttons more accessible */
+.btn:focus,
+.btn:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Loading skeleton for better UX */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

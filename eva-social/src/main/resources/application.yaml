@@ -12,6 +12,11 @@ spring:
     hibernate:
       ddl-auto: create-drop
 
+  # Jackson configuration to handle null values in boolean fields
+  jackson:
+    deserialization:
+      fail-on-null-for-primitives: false
+
 # JWT Configuration
 jwt:
   secret: ${JWT_SECRET:7s1YRg86WGmRHqniBez5bNdmS+GNteG9OZRSV9XafuA=}

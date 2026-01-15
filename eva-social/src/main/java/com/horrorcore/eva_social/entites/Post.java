@@ -28,7 +28,7 @@ public class Post {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "author_email")
+    @JoinColumn(name = "author_email", referencedColumnName = "email")
     private UserCredential author;
 
     @Size(min = 5, max = 300)
