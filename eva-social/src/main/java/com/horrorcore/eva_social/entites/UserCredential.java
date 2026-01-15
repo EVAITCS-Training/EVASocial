@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,6 +20,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class UserCredential implements UserDetails {
     @Id
     @Email(message = "Please provide a valid email address")
@@ -37,11 +39,12 @@ public class UserCredential implements UserDetails {
             regexp = "^(ADMIN|USER)$",
             message = "Role must be either ADMIN or USER"
     )
+    @Builder.Default
     private String role = "USER";
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role));
     }
 
     @Override
