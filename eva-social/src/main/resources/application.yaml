@@ -11,3 +11,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
+
+# JWT Configuration
+jwt:
+  secret: REPLACE_WITH_GENERATED_BASE64_SECRET_AT_LEAST_256_BITS
