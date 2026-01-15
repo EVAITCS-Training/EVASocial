@@ -15,6 +15,8 @@ import com.horrorcore.eva_social.dto.PostNewUser;
 import com.horrorcore.eva_social.services.JwtService;
 import com.horrorcore.eva_social.services.UserCredentialService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthController {
@@ -28,13 +30,13 @@ public class AuthController {
 	private AuthenticationManager authenticationManager;
 	
 	@PostMapping("/register")
-	public ResponseEntity<Void> register(@RequestBody PostNewUser postNewUser) {
+	public ResponseEntity<Void> register(@Valid @RequestBody PostNewUser postNewUser) {
 		userCredentialService.register(postNewUser);
 		return ResponseEntity.created(null).build();
 		}
 	
 	@PostMapping("/login")
-	public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest authRequest) {
+	public ResponseEntity<AuthResponse> login(@Valid @RequestBody AuthRequest authRequest) {
 		authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(
 						authRequest.username(), authRequest.password()));

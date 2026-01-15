@@ -14,4 +14,4 @@ spring:
 
 # JWT Configuration
 jwt:
-  secret: 7s1YRg86WGmRHqniBez5bNdmS+GNteG9OZRSV9XafuA=
+  secret: ${JWT_SECRET:7s1YRg86WGmRHqniBez5bNdmS+GNteG9OZRSV9XafuA=}
