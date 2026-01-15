@@ -27,10 +27,15 @@ public class SecurityConfig {
         		.cors(cor -> cor.configurationSource(corConfig()))
         		.csrf(cs -> cs.disable())
                 .authorizeHttpRequests(http ->http
+                        // Public authentication endpoints
                         .requestMatchers(
                         		"/api/v1/auth/register",
                         		"/api/v1/auth/login",
-                                "/actuator/**",
+                                "/actuator/**"
+                        		)
+                        .permitAll()
+                        // Public GET endpoints for browsing
+                        .requestMatchers(
                                 "/",
                                 "/static/**",
                                 "/assets/**",
@@ -39,10 +44,28 @@ public class SecurityConfig {
                                 "/home",
                                 "/posts",
                                 "/posts/"
-                        		)
+                        )
                         .permitAll()
+                        // Public GET endpoints for posts and users (viewing only)
+                        .requestMatchers(
+                                "/api/v1/posts",
+                                "/api/v1/posts/{id}",
+                                "/api/v1/posts/search",
+                                "/api/v1/posts/hashtag/{tag}",
+                                "/api/v1/posts/trending-hashtags",
+                                "/api/v1/users/{id}",
+                                "/api/v1/users/{id}/posts",
+                                "/api/v1/users/{id}/followers",
+                                "/api/v1/users/{id}/following",
+                                "/api/v1/users/search",
+                                "/api/v1/comments/post/{postId}",
+                                "/api/v1/comments/{id}/replies"
+                        )
+                        .permitAll()
+                        // All other /api/v1/** endpoints require authentication
                         .requestMatchers("/api/v1/**")
                         .authenticated()
+                        // Everything else is permitted
                         .anyRequest()
                         .permitAll()
                         )
